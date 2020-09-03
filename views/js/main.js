@@ -376,7 +376,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.classList.add("randomPizzaContainer");
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   
-  pizzaImageContainer.classList.addClass('pizza-img-container')
+  pizzaImageContainer.classList.add('pizza-img-container')
 
   pizzaImage.src = "images/pizza.png";
   pizzaImage.classList.add("img-responsive");
@@ -503,7 +503,8 @@ function updatePositions() {
     // document.body.scrollTop is no longer supported in Chrome.
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.setProperty('--mover-left', items[i].basicLeft + 100 * phase + 'px')
+
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -520,18 +521,18 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
+function generatePizzaBg () {
+  console.log('loadded')
   var cols = 8;
   var s = 256;
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    elem.style.setProperty('--mover-top', (Math.floor(i / cols) * s) + 'px');
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
   updatePositions();
-});
+}
+generatePizzaBg()
