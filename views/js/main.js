@@ -379,6 +379,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImageContainer.classList.add('pizza-img-container')
 
   pizzaImage.src = "images/pizza.png";
+  pizzaImage.alt = "Another pizza";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -530,6 +531,8 @@ function generatePizzaBg () {
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.basicLeft = (i % cols) * s;
+    elem.setAttribute('role', 'presentation')
+    elem.alt = ""
     elem.style.setProperty('--mover-top', (Math.floor(i / cols) * s) + 'px');
     document.querySelector("#movingPizzas1").appendChild(elem);
   }

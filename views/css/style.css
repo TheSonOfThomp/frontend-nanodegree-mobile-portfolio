@@ -10,10 +10,12 @@
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   background: black;
+  color: white;
 }
 
 input {
-  background: grey;
+  background: black;
+  color: white;
   font-size: 18px;
 }
 
@@ -32,7 +34,7 @@ form {
 .mover {
   position: fixed;
   width: 73.333px;
-  height: 100px;
+  height: auto;
   top: var(--mover-top, 0);
   transform: translateX(var(--mover-left, 0));
   z-index: -1;
